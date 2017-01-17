@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace ChatAppClient
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for frmMain.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class frmMain : Window
     {
-        public MainWindow()
+        public frmMain()
         {
             InitializeComponent();
         }
