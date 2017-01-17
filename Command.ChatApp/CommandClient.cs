@@ -9,6 +9,9 @@ using System.Windows.Forms;
 
 namespace Command.ChatApp
 {
+    /// <summary>
+    /// The command client command class.
+    /// </summary>
     public class CommandClient
     {
         private Socket clientSocket;
@@ -17,6 +20,9 @@ namespace Command.ChatApp
         private IPEndPoint serverIP;
         private string networkName;
 
+        /// <summary>
+        /// [Gets] The value that specifies the current client is connected or not.
+        /// </summary>
         public bool Connected
         {
             get
@@ -32,6 +38,9 @@ namespace Command.ChatApp
             }
         }
 
+        /// <summary>
+        /// [Gets] The IP address of the remote server.If this client is disconnected,this property returns IPAddress.None.
+        /// </summary>
         public IPAddress ServerIP
         {
             get
@@ -47,6 +56,9 @@ namespace Command.ChatApp
             }
         }
 
+        /// <summary>
+        /// [Gets] The comunication port of the remote server.If this client is disconnected,this property returns -1.
+        /// </summary>
         public int ServerPort
         {
             get
@@ -62,6 +74,9 @@ namespace Command.ChatApp
             }
         }
 
+        /// <summary>
+        /// [Gets] The IP address of this client.If this client is disconnected,this property returns IPAddress.None.
+        /// </summary>
         public IPAddress IP
         {
             get
@@ -77,6 +92,9 @@ namespace Command.ChatApp
             }
         }
 
+        /// <summary>
+        /// [Gets] The comunication port of this client.If this client is disconnected,this property returns -1.
+        /// </summary>
         public int Port
         {
             get
@@ -92,6 +110,9 @@ namespace Command.ChatApp
             }
         }
 
+        /// <summary>
+        /// [Gets/Sets] The string that will sent to the server and then to other clients, to identify this client to them.
+        /// </summary>
         public string NetworkName
         {
             get { return networkName; }
@@ -99,6 +120,11 @@ namespace Command.ChatApp
         }
 
         #region Ctor
+        /// <summary>
+        /// Cretaes a command client instance.
+        /// </summary>
+        /// <param name="server">The remote server to connect.</param>
+        /// <param name="netName">The string that will send to the server and then to other clients, to identify this client to all clients.</param>
         public CommandClient(IPEndPoint server, string netName)
         {
             this.serverIP = server;
@@ -109,6 +135,12 @@ namespace Command.ChatApp
                 .NetworkAvailabilityChangedEventHandler(NetworkChange_NetworkAvailabilityChanged);
         }
 
+        /// <summary>
+        /// Cretaes a command client instance.
+        /// </summary>
+        ///<param name="serverIP">The IP of remote server.</param>
+        ///<param name="port">The port of remote server.</param>
+        /// <param name="netName">The string that will send to the server and then to other clients, to identify this client to all clients.</param>
         public CommandClient(IPAddress serverIP, int port, string netName)
         {
             this.serverIP = new IPEndPoint(serverIP, port);
